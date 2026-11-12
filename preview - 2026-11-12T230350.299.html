@@ -1,0 +1,574 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THE LLAMA HAS AGED — An International Event</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Playfair+Display:wght@700;900&display=swap');
+
+:root {
+  --gold: #ffd166;
+  --pink: #ff6b9d;
+  --purple: #160b30;
+  --white: #fffaf0;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--purple);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 100px 24px;
+  text-align: center;
+  position: relative;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(58px, 11vw, 150px);
+  margin: 20px auto;
+  max-width: 1100px;
+}
+
+h2 {
+  font-size: clamp(36px, 6vw, 76px);
+}
+
+p {
+  line-height: 1.75;
+}
+
+.small-label {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--gold);
+}
+
+button {
+  background: var(--gold);
+  border: 0;
+  color: #261537;
+  border-radius: 100px;
+  padding: 18px 28px;
+  font-family: inherit;
+  font-weight: 900;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+
+button:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 12px 40px #ffd16655;
+}
+
+button:active { transform: scale(.95); }
+
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background:
+    radial-gradient(ellipse at 50% 30%, #67389a 0%, transparent 55%),
+    linear-gradient(145deg, #110921, #281048);
+}
+
+.hero h1 span { color: var(--gold); }
+
+.hero-sub {
+  font-size: clamp(17px, 2vw, 24px);
+  max-width: 670px;
+}
+
+.hero-llama {
+  font-size: clamp(110px, 22vw, 230px);
+  display: block;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 25px 28px #0005);
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-22px) rotate(5deg); }
+}
+
+.scroll-hint {
+  margin-top: 65px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  opacity: .5;
+}
+
+.ticker {
+  background: var(--gold);
+  color: #22102e;
+  padding: 16px;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ticker span {
+  display: inline-block;
+  animation: ticker 17s linear infinite;
+}
+
+@keyframes ticker {
+  from { transform: translateX(100vw); }
+  to { transform: translateX(-100%); }
+}
+
+.alert {
+  background: #ae183b;
+  padding: 70px 24px;
+}
+
+.alert h2 { margin: 15px 0; }
+
+.alert-icon {
+  font-size: 75px;
+  animation: shake .5s infinite alternate;
+}
+
+@keyframes shake {
+  from { transform: rotate(-12deg); }
+  to { transform: rotate(12deg); }
+}
+
+.alert p { max-width: 650px; margin: 20px auto; }
+
+.achievements {
+  background: #fff3dd;
+  color: #2a1734;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 950px;
+  margin: 50px auto 0;
+  gap: 20px;
+}
+
+.stat {
+  border: 2px solid #2a1734;
+  border-radius: 18px;
+  padding: 32px 12px;
+}
+
+.stat-number {
+  font-size: clamp(38px, 6vw, 80px);
+  font-weight: 900;
+  color: #a72d64;
+}
+
+.stat-label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.presidential {
+  background:
+    radial-gradient(circle at top, #3e3970, #10132e);
+}
+
+.quote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 4vw, 46px);
+  max-width: 850px;
+  margin: 45px auto;
+  line-height: 1.45;
+}
+
+.quote strong { color: var(--gold); }
+
+.quote-by {
+  color: #c8bae2;
+  font-size: 14px;
+}
+
+.waffle {
+  background: #f7a8c1;
+  color: #29152c;
+}
+
+.waffle-emoji {
+  font-size: 115px;
+  animation: rotateWaffle 6s linear infinite;
+}
+
+@keyframes rotateWaffle {
+  to { transform: rotate(360deg); }
+}
+
+.waffle-output {
+  max-width: 700px;
+  min-height: 100px;
+  margin: 30px auto;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(25px, 4vw, 42px);
+  font-weight: bold;
+}
+
+.certificate {
+  background: #e9d9ff;
+  color: #241638;
+}
+
+.certificate-paper {
+  background: #fffdf5;
+  border: 10px double #d1a24a;
+  max-width: 850px;
+  margin: 40px auto;
+  padding: 65px 30px;
+  box-shadow: 15px 20px 0 #250f4140;
+}
+
+.certificate-paper h2 { color: #7a3d88; }
+
+.seal { font-size: 65px; }
+
+.final {
+  min-height: 85svh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    radial-gradient(circle at center, #61378c, #140922);
+}
+
+.final h2 span { color: var(--gold); }
+
+.final-message {
+  max-width: 650px;
+  margin: 15px auto 35px;
+  font-size: 19px;
+}
+
+.confetti {
+  position: fixed;
+  z-index: 999;
+  top: -30px;
+  pointer-events: none;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  to { transform: translateY(110vh) rotate(900deg); }
+}
+
+.popup {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #11091edc;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.popup.show { display: flex; }
+
+.popup-inner {
+  background: #fff9ec;
+  color: #251335;
+  border: 7px solid var(--gold);
+  border-radius: 18px;
+  text-align: center;
+  padding: 40px 25px;
+  max-width: 490px;
+  width: 100%;
+  box-shadow: 0 30px 90px #0008;
+  animation: popIn .3s ease-out;
+}
+
+@keyframes popIn {
+  from { transform: scale(.6) rotate(-7deg); opacity: 0; }
+  to { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.popup-inner h2 { font-size: 35px; }
+
+.popup-inner p { font-size: 17px; }
+
+@media (max-width: 650px) {
+  section { padding: 75px 18px; }
+  .stats { grid-template-columns: 1fr; }
+  .stat { padding: 18px; }
+  .certificate-paper { padding: 40px 17px; }
+  .small-label { letter-spacing: 2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- THE DRAMATIC OPENING -->
+<section class="hero">
+
+  <div class="small-label">
+    A HISTORIC INTERNATIONAL ANNOUNCEMENT
+  </div>
+
+  <span class="hero-llama">🦙</span>
+
+  <h1>
+    THE LLAMA<br>
+    <span>HAS AGED.</span>
+  </h1>
+
+  <p class="hero-sub">
+    Against all odds. Against all expectations.
+    Despite absolutely nobody asking him to.
+    The llama has successfully completed another year.
+  </p>
+
+  <button onclick="celebrate()">
+    ACKNOWLEDGE THIS HISTORIC EVENT 🎉
+  </button>
+
+  <div class="scroll-hint">SCROLL FOR THE OFFICIAL REPORT ↓</div>
+
+</section>
+
+<!-- BREAKING NEWS -->
+<div class="ticker">
+  <span>
+    BREAKING NEWS: LLAMA GETS OLDER ◆ SCIENTISTS BAFFLED ◆
+    LOCAL LLAMA REFUSES TO STOP WAFFLING ◆
+    INTERNATIONAL COMMUNITY CONCERNED ◆
+    BIRTHDAY CAKE UNDER INVESTIGATION ◆
+  </span>
+</div>
+
+<section class="alert">
+
+  <div class="alert-icon">🚨</div>
+
+  <div class="small-label" style="color:white">
+    NATIONAL BIRTHDAY EMERGENCY
+  </div>
+
+  <h2>THIS IS NOT A DRILL.</h2>
+
+  <p>
+    At approximately 00:00 hours, the subject known only
+    as "Llama" became one year older.
+  </p>
+
+  <p>
+    Authorities have confirmed he remains extremely silly.
+    The situation is being monitored.
+  </p>
+
+  <button onclick="openPopup(
+    '🚨 OFFICIAL UPDATE',
+    'The llama is STILL having a birthday. Authorities are overwhelmed.'
+  )">
+    REQUEST EMERGENCY UPDATE
+  </button>
+
+</section>
+
+<!-- IMPORTANT ACHIEVEMENTS -->
+<section class="achievements">
+
+  <div class="small-label" style="color:#a72d64">
+    THE NUMBERS DON'T LIE
+  </div>
+
+  <h2>A Year of Extraordinary Achievement.</h2>
+
+  <p>Independent analysts have verified the following statistics.</p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-number">365</div>
+      <div class="stat-label">DAYS SPENT BEING A LLAMA</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-number">∞</div>
+      <div class="stat-label">AMOUNT OF WAFFLE PRODUCED</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-number">0</div>
+      <div class="stat-label">THOUGHTS BEHIND THOSE EYES</div>
+    </div>
+  </div>
+
+  <p style="font-size:12px; margin-top:30px; opacity:.6">
+    *Statistics provided by the International Llama Research Institute.
+    This organisation does not exist.
+  </p>
+
+</section>
+
+<!-- TRUMP SPEECH -->
+<section class="presidential">
+
+  <div class="small-label">
+    AN OFFICIAL PRESIDENTIAL STATEMENT
+  </div>
+
+  <h2>Even the President<br>Has Something to Say.</h2>
+
+  <div style="font-size:90px">🍞🇺🇸</div>
+
+  <div class="quote">
+    "Look, folks. The llama? Very old.
+    Getting older every year. Nobody knows why.
+    Tremendous neck. <strong>Quite frankly,
+    the longest neck I've ever seen.</strong>
+    And the waffling? Out of control.
+    But today, we celebrate. Beautiful birthday.
+    Possibly the greatest birthday in history."
+  </div>
+
+  <p class="quote-by">
+    — President Donald J. Crumb, Leader of the Doughmocracy
+  </p>
+
+  <button onclick="openPopup(
+    '🍞 PRESIDENTIAL DECREE',
+    'I am hereby declaring today NATIONAL LLAMA DAY. The Knot Queen opposed it. Pikachu voted against it. Very unfair. We passed it anyway.'
+  )">
+    READ THE CLASSIFIED DOCUMENTS
+  </button>
+
+</section>
+
+<!-- WAFFLE GENERATOR -->
+<section class="waffle">
+
+  <div class="small-label" style="color:#693258">
+    SCIENTIFIC SIMULATION
+  </div>
+
+  <div class="waffle-emoji">🧇</div>
+
+  <h2>The Llama Waffle Generator™</h2>
+
+  <p>
+    Press the button to simulate the intellectual output
+    of the birthday llama.
+  </p>
+
+  <div id="waffleOutput" class="waffle-output">
+    "Well, actually, it's quite complicated..."
+  </div>
+
+  <button onclick="generateWaffle()">
+    GENERATE MORE WAFFLE 🧇
+  </button>
+
+</section>
+
+<!-- CERTIFICATE -->
+<section class="certificate">
+
+  <div class="small-label" style="color:#7a3d88">
+    OFFICIALLY CERTIFIED
+  </div>
+
+  <div class="certificate-paper">
+
+    <div class="seal">🏅</div>
+
+    <p style="letter-spacing:4px; font-size:12px">
+      INTERNATIONAL DEPARTMENT OF LLAMAS
+    </p>
+
+    <h2>CERTIFICATE<br>OF EXISTENCE</h2>
+
+    <p>This is to formally acknowledge that</p>
+
+    <h2 style="font-size:58px">THE LLAMA</h2>
+
+    <p>
+      Has, through extraordinary commitment and
+      absolutely no personal effort whatsoever,
+      successfully survived another complete orbit
+      of the sun.
+    </p>
+
+    <p>
+      In recognition of this achievement, he is
+      hereby awarded the prestigious title of:
+    </p>
+
+    <h3 style="font-size:25px">
+      ✨ OFFICIALLY OLDER THAN BEFORE ✨
+    </h3>
+
+    <p>
+      Valid until next birthday.<br>
+      Non-transferable.<br>
+      No refunds.
+    </p>
+
+    <div class="seal">🦙</div>
+
+  </div>
+
+  <button onclick="window.print()">
+    PRINT THIS COMPLETELY USELESS CERTIFICATE
+  </button>
+
+</section>
+
+<!-- SECRET BUTTONS -->
+<section style="background:#261343">
+
+  <div class="small-label">
+    VERY IMPORTANT GOVERNMENT SERVICES
+  </div>
+
+  <h2>Choose Your Destiny.</h2>
+
+  <p>These buttons have been extensively tested by nobody.</p>
+
+  <div style="
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    justify-content:center;
+    margin-top:35px;
+  ">
+
+    <button onclick="openPopup(
+      '🦙 LLAMA INSPECTION COMPLETE',
+      'Diagnosis: 100% llama. Prognosis: increasingly llama.'
+    )">
+      INSPECT
